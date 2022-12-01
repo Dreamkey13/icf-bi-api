@@ -1,4 +1,4 @@
-FROM maven:4.0.0 AS maven
+FROM maven:3.8.6 AS maven
 # Create a workdir for our app
 WORKDIR /usr/src/app
 COPY . /usr/src/app

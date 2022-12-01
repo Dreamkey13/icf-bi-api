@@ -1,0 +1,73 @@
+openapi: 3.0.1
+info:
+  title: Business Intelligence Ingestion Interface
+  version: '1.0'
+paths:
+  /Assets/{serialNumber}/metrics:
+    post:
+      tags:
+        - BI
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+          description: Serial number of the asset for which logs will be posted
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/StringDoubleKeyValuePair'
+      responses:
+        '200':
+          description: Success
+  /Assets/{serialNumber}/AssetInformation:
+    post:
+      tags:
+        - BI
+      parameters:
+        - in: path
+          name: serialNumber
+          schema:
+            type: string
+          required: true
+          description: Serial number of the asset for which logs will be posted
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetInformation'
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    AssetInformation:
+      type: object
+      properties:
+        serialNo:
+          type: string
+          nullable: true
+        dataPoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/StringDoubleKeyValuePair'
+          nullable: true
+      additionalProperties: false
+    StringDoubleKeyValuePair:
+      type: object
+      properties:
+        key:
+          type: string
+          nullable: false
+        value:
+          type: number
+          format: double
+          nullable: false
+      additionalProperties: false
+

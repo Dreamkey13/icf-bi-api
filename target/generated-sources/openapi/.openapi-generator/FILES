@@ -1,0 +1,6 @@
+README.md
+pom.xml
+src/gen/java/main/com/icf/api/ApiUtil.java
+src/gen/java/main/com/icf/api/AssetsApi.java
+src/gen/java/main/com/icf/model/AssetInformation.java
+src/gen/java/main/com/icf/model/StringDoubleKeyValuePair.java
